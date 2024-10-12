@@ -7,6 +7,26 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+faker = "^30.3.0"
+pytest = "^8.3.3"
+requests = "^2.32.3"
+pydantic = "^2.9.2"
+allure-pytest = "^2.13.5"
+
+
+[tool.pytest.ini_options]
+addopts = [
+    "-s",
+    "-v",
+    "--alluredir", "allure-results",
+    "--clean-alluredir",
+]
+
+log_cli = 1
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+
 
 
 [build-system]
