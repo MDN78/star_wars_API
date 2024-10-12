@@ -25,6 +25,7 @@ class Starships(BaseModel):
     created: Annotated[str, StringConstraints(min_length=1, max_length=100)]
     edited: Annotated[str, StringConstraints(min_length=1, max_length=100)]
 
+
 class ListStarships(BaseModel):
     count: Annotated[int, Field(strict=True)]
     next: Annotated[str, StringConstraints(min_length=1, max_length=100)]

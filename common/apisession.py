@@ -5,8 +5,8 @@ from requests import Session, Response
 
 logger = logging.getLogger()
 
-def allure_request_logger(function):
 
+def allure_request_logger(function):
     def wrapper(*args, **kwargs):
         response: Response = function(*args, **kwargs)
         method = response.request.method
@@ -24,6 +24,7 @@ def allure_request_logger(function):
 
 '''Переопределили класс session под свои нужды и задали там параметры'''
 
+
 class TestSession(Session):
     # чтобы не выскакивала ошибка тк в классе с названием Тест нет по факту тестов или переименовывать класс
     __test__ = False
@@ -34,6 +35,6 @@ class TestSession(Session):
         # self.base_url = base_url
 
     @allure_request_logger
-    def request(self, path, method='GET',  *args, **kwargs):
+    def request(self, path, method='GET', *args, **kwargs):
         joined_url = f'{self.base_url}{path}'
         return super().request(method, joined_url, *args, **kwargs)
