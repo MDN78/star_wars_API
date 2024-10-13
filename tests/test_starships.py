@@ -4,7 +4,7 @@ from models.starships import ListStarships, Starships
 from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 from tests.conftest import api_session
 
-base_url = 'https://swapi.dev/api/'
+# base_url = 'https://swapi.dev/api/'
 
 @allure.feature('Starships')
 class TestStarships:
@@ -55,7 +55,7 @@ class TestStarships:
             response = api_session.request(method='POST', path='/starships/2/')
             assert response.status_code == 405
             assert response.text == RESPONSE_BODY_405
-            # assert response.json() == {"detail":"Method 'POST' not allowed."}
+            assert response.json() == {"detail":"Method 'POST' not allowed."}
 
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/starships/abcd')

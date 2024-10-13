@@ -4,8 +4,8 @@ from tests.conftest import api_session
 from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 from models.people import People, ListPeople
 
-main_site = 'https://docs.spacexdata.com/'
-base_url = 'https://swapi.dev/api/'
+# main_site = 'https://docs.spacexdata.com/'
+# base_url = 'https://swapi.dev/api/'
 
 @allure.feature('People')
 class TestPeople:
@@ -32,6 +32,7 @@ class TestPeople:
             people = People.model_validate(response.json())
             assert people.name == 'Ob-Wan Kenobi'
 
+        @allure.title('Gett first people date')
         def test_get_first_people(self, api_session):
             response = api_session.request(method='GET', path='/people/1/')
             assert response.status_code == 200
@@ -42,6 +43,7 @@ class TestPeople:
             people = People.model_validate(resp)
             assert people.name == 'Luke Skywalker'
 
+        @allure.title('Gett second people dates')
         def test_get_second_people(self, api_session):
             response = api_session.request(method='GET', path='/people/2/')
             assert response.status_code == 200
@@ -49,10 +51,10 @@ class TestPeople:
             people = People.model_validate(resp)
             assert resp['name'] == 'C-3PO'
             assert people.name == 'C-3PO'
-
             people = People.model_validate(resp)
             assert people.name == 'C-3PO'
 
+        @allure.title('Gett information about people without user agent')
         def test_get_without_header_user_agent(self, api_session):
             api_session.headers.pop('user-agent')
             response = api_session.request(method='GET', path='/people/')
