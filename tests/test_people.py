@@ -9,7 +9,6 @@ from models.people import People, ListPeople
 
 @allure.feature('People')
 class TestPeople:
-
     @allure.story('Positive tests')
     class TestPositive:
 
@@ -54,7 +53,7 @@ class TestPeople:
             people = People.model_validate(resp)
             assert people.name == 'C-3PO'
 
-        @allure.title('Gett information about people without user agent')
+        @allure.title('Get information about people without user agent')
         def test_get_without_header_user_agent(self, api_session):
             api_session.headers.pop('user-agent')
             response = api_session.request(method='GET', path='/people/')
