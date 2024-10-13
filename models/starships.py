@@ -1,6 +1,6 @@
 from decimal import Decimal
 from typing_extensions import Annotated
-from pydantic import BaseModel, StringConstraints, Field, constr
+from pydantic import BaseModel, StringConstraints, Field
 
 '''Work rules with Pydantic - constract some functions'''
 
@@ -31,4 +31,4 @@ class ListStarships(BaseModel):
     next: Annotated[str, StringConstraints(min_length=1, max_length=100)]
     # previous: Annotated[str, Field(allow_inf_nan=None)]
     # previous: bool
-    results: list[BaseModel]
+    results: list[Starships]

@@ -14,6 +14,7 @@ class TestStarships:
 
         def test_get_all_starships(self, api_session):
             response = api_session.request(method='GET', path='/starships/')
+            print(response)
             assert response.status_code == 200
             assert response.headers.get('content-type') == 'application/json'
             starships = ListStarships.model_validate(response.json())
