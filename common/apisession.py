@@ -19,7 +19,7 @@ def allure_request_logger(function):
         try:
             logger.info(response.json())
         except ValueError:
-            print('Missing JSON')
+            print('Response without JSON')
         return response
 
     return wrapper
