@@ -16,7 +16,7 @@ def allure_request_logger(function):
         logger.info(response.request.headers)
         logger.info(response.request.body)
         logger.info(response.headers)
-        logger.info(response.json())
+        # logger.info(response.json())
         return response
 
     return wrapper
@@ -32,9 +32,12 @@ class TestSession(Session):
     def __init__(self):
         # инициализатор session в классе
         super().__init__()
+        self.base_url = None
         # self.base_url = base_url
 
     @allure_request_logger
-    def request(self, path, method='GET', *args, **kwargs):
+    def request(self, path, method='GET'):
         joined_url = f'{self.base_url}{path}'
-        return super().request(method, joined_url, *args, **kwargs)
+        return super().request(method, joined_url)
+
+# , *args, **kwargs

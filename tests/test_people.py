@@ -64,6 +64,7 @@ class TestPeople:
 
         def test_404(self, api_session):
             response = api_session.request(method='GET', path='/wrong/')
+            print(response)
             assert response.status_code == 404
             assert response.headers.get('Content-Type') == 'text/html'
 
@@ -71,7 +72,7 @@ class TestPeople:
             response = api_session.request(method='POST', path='/people/2/')
             assert response.status_code == 405
             assert response.text == RESPONSE_BODY_405
-            # assert response.json() == {"detail":"Method 'POST' not allowed."}
+            assert response.json() == {"detail":"Method 'POST' not allowed."}
 
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/people/abcd')
