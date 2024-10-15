@@ -1,8 +1,7 @@
-import pytest
 import allure
 from tests.conftest import api_session
-from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 from models.films import Films, ListFilms
+from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 
 
 @allure.feature('Films')
@@ -40,3 +39,10 @@ class TestFilms:
             response = api_session.request(method='GET', path='/films/abcd/')
             assert response.status_code == 404
             assert response.text == RESPONSE_BODY_404
+
+        @allure.title('Get 405')
+        def test_405(self, api_session):
+            response = api_session.request(method='POST', path='/films/')
+            assert response.status_code == 405
+            assert response.text == RESPONSE_BODY_405
+            assert response.json() == {"detail": "Method 'POST' not allowed."}

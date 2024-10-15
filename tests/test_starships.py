@@ -1,8 +1,8 @@
 import pytest
 import allure
+from tests.conftest import api_session
 from models.starships import ListStarships, Starships
 from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
-from tests.conftest import api_session
 
 
 @allure.feature('Starships')

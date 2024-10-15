@@ -1,8 +1,8 @@
 import pytest
 import allure
 from tests.conftest import api_session
-from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 from models.people import People, ListPeople
+from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 
 
 @allure.feature('People')
