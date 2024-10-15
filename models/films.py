@@ -23,6 +23,4 @@ class Films(BaseModel):
 
 class ListFilms(BaseModel):
     count: Annotated[int, Field(strict=True)]
-    # next: bool
-    # previous: Annotated[bool, Field(strict=True)]
     results: list[Films]
