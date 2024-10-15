@@ -1,11 +1,5 @@
 import pytest
 from common.apisession import TestSession
-# from project_documents.customer import Customer
-
-
-# @pytest.fixture
-# def customer(scope='function') -> Customer:
-#     return Customer.get_customer()
 
 
 @pytest.fixture(scope='function')

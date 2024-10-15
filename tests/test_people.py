@@ -4,8 +4,6 @@ from tests.conftest import api_session
 from common.common import RESPONSE_BODY_404, RESPONSE_BODY_405
 from models.people import People, ListPeople
 
-# main_site = 'https://docs.spacexdata.com/'
-# base_url = 'https://swapi.dev/api/'
 
 @allure.feature('People')
 class TestPeople:
@@ -15,12 +13,11 @@ class TestPeople:
         @allure.title('Gett all people dates')
         def test_get_all_people(self, api_session):
             response = api_session.request(method='GET', path='/people/')
-            print(response)
             assert response.status_code == 200
             assert response.headers.get('content-type') == 'application/json'
             people = ListPeople.model_validate(response.json())
             # you can get some info from response in format json
-            print(people.model_dump_json())
+            # print(people.model_dump_json())
 
         @pytest.mark.skip('For allure statistic')
         def test_search_people(self, api_session):
@@ -37,7 +34,6 @@ class TestPeople:
             assert response.status_code == 200
             resp = response.json()
             assert resp['name'] == 'Luke Skywalker'
-            print(response.json())
             # validate by pandantic from directory models-people
             people = People.model_validate(resp)
             assert people.name == 'Luke Skywalker'
@@ -63,18 +59,20 @@ class TestPeople:
     @allure.story('Negative tests')
     class TestNegstive:
 
+        @allure.title('Get 404')
         def test_404(self, api_session):
             response = api_session.request(method='GET', path='/wrong/')
-            print(response)
             assert response.status_code == 404
             assert response.headers.get('Content-Type') == 'text/html'
 
+        @allure.title('Get 405')
         def test_405(self, api_session):
             response = api_session.request(method='POST', path='/people/2/')
             assert response.status_code == 405
             assert response.text == RESPONSE_BODY_405
-            assert response.json() == {"detail":"Method 'POST' not allowed."}
+            assert response.json() == {"detail": "Method 'POST' not allowed."}
 
+        @allure.title('Wrong query')
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/people/abcd')
             assert response.status_code == 404
