@@ -197,6 +197,19 @@ files = [
 ]
 
 [[package]]
+name = "curlify"
+version = "2.2.1"
+description = "Library to convert python requests object to curl command."
+optional = false
+python-versions = "*"
+files = [
+    {file = "curlify-2.2.1.tar.gz", hash = "sha256:0d3f02e7235faf952de8ef45ef469845196d30632d5838bcd5aee217726ddd6d"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
 name = "faker"
 version = "30.3.0"
 description = "Faker is a Python package that generates fake data for you."
@@ -483,4 +496,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "f846568d0cb9c418f9bca9d050bb402ca89613e7f5e97849edbdbc5d5e0e61d2"
+content-hash = "d77551b4bb1d16ff034a8bfdee58302d87148701ea1b11d3705843085204aac6"
