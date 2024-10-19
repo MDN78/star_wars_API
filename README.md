@@ -10,4 +10,8 @@
 - [x] without user agent
 
 ## Allure отчет  
-[allure report]()
+[allure report](assets/jenkins_allure_report.PNG)  
+
+Отчет позволяет получить детальную информацию по все шагам тестов, включая скриншоты и log - файлы
+
+[allure report 2](assets/jenkins_allure_logs.PNG)  
