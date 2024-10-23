@@ -13,41 +13,55 @@ class TestPeople:
         @allure.title('Gett all people dates')
         def test_get_all_people(self, api_session):
             response = api_session.request(method='GET', path='/people/')
-            assert response.status_code == 200
-            assert response.headers.get('content-type') == 'application/json'
-            people = ListPeople.model_validate(response.json())
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
+            with allure.step('Validate response json'):
+                people = ListPeople.model_validate(response.json())
             # you can get some info from response in format json
             # print(people.model_dump_json())
 
-        @pytest.mark.skip('For allure statistic')
+        @pytest.mark.skip('Close for update')
         def test_search_people(self, api_session):
             params = {'name': 'Ob-Wan Kenobi'}
             response = api_session.request(method='GET', path='/people/', params=params)
-            assert response.status_code == 200
-            assert response.headers.get('content-type') == 'application/json'
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
             people = People.model_validate(response.json())
-            assert people.name == 'Ob-Wan Kenobi'
+            with allure.step(f'Check name {people.name}'):
+                assert people.name == 'Ob-Wan Kenobi'
 
         @allure.title('Gett first people date')
         def test_get_first_people(self, api_session):
             response = api_session.request(method='GET', path='/people/1/')
-            assert response.status_code == 200
             resp = response.json()
-            assert resp['name'] == 'Luke Skywalker'
-            # validate by pandantic from directory models-people
             people = People.model_validate(resp)
-            assert people.name == 'Luke Skywalker'
+
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+
+            with allure.step(f'Check name from response {resp['name']}'):
+                assert resp['name'] == 'Luke Skywalker'
+            # validate by pandantic from directory models-people
+            with allure.step(f'Check name {people.name}'):
+                assert people.name == 'Luke Skywalker'
 
         @allure.title('Gett second people dates')
         def test_get_second_people(self, api_session):
             response = api_session.request(method='GET', path='/people/2/')
-            assert response.status_code == 200
             resp = response.json()
             people = People.model_validate(resp)
-            assert resp['name'] == 'C-3PO'
-            assert people.name == 'C-3PO'
-            people = People.model_validate(resp)
-            assert people.name == 'C-3PO'
+
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check name from response scheme'):
+                assert resp['name'] == 'C-3PO'
+            with allure.step('Check name'):
+                assert people.name == 'C-3PO'
+
 
         @allure.title('Get information about people without user agent')
         def test_get_without_header_user_agent(self, api_session):

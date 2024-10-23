@@ -5,7 +5,7 @@ from pydantic import BaseModel, StringConstraints, Field, constr
 
 
 class People(BaseModel):
-    name: Annotated[str, StringConstraints(min_length=1, max_length=100)]
+    name: Annotated[str, StringConstraints(min_length=1, max_length=500)]
     height: Annotated[str, StringConstraints(min_length=1, max_length=100)]
     mass: Annotated[str, StringConstraints(min_length=1, max_length=100)]
     hair_color: Annotated[str, StringConstraints(min_length=1, max_length=100)]
