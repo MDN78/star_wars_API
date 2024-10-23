@@ -67,8 +67,11 @@ class TestPeople:
         def test_get_without_header_user_agent(self, api_session):
             api_session.headers.pop('user-agent')
             response = api_session.request(method='GET', path='/people/')
-            assert response.status_code == 200
-            assert response.headers.get('content-type') == 'application/json'
+
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
 
     @allure.story('Negative tests')
     class TestNegstive:
@@ -76,18 +79,28 @@ class TestPeople:
         @allure.title('Get 404')
         def test_404(self, api_session):
             response = api_session.request(method='GET', path='/wrong/')
-            assert response.status_code == 404
-            assert response.headers.get('Content-Type') == 'text/html'
+
+            with allure.step('Status code = 404'):
+                assert response.status_code == 404
+            with allure.step('Response headers'):
+                assert response.headers.get('Content-Type') == 'text/html'
 
         @allure.title('Get 405')
         def test_405(self, api_session):
             response = api_session.request(method='POST', path='/people/2/')
-            assert response.status_code == 405
-            assert response.text == RESPONSE_BODY_405
-            assert response.json() == {"detail": "Method 'POST' not allowed."}
+
+            with allure.step('Status code = 405'):
+                assert response.status_code == 405
+            with allure.step('Response body = 405'):
+                assert response.text == RESPONSE_BODY_405
+            with allure.step('Method POST not allowed'):
+                assert response.json() == {"detail": "Method 'POST' not allowed."}
 
         @allure.title('Wrong query')
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/people/abcd')
-            assert response.status_code == 404
-            assert response.text == RESPONSE_BODY_404
+
+            with allure.step('Status code = 404'):
+                assert response.status_code == 404
+            with allure.step('Response body = 404'):
+                assert response.text == RESPONSE_BODY_404
