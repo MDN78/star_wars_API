@@ -13,24 +13,32 @@ class TestStarships:
         @allure.title('Gett all starships')
         def test_get_all_starships(self, api_session):
             response = api_session.request(method='GET', path='/starships/')
-            assert response.status_code == 200
-            assert response.headers.get('content-type') == 'application/json'
-            starships = ListStarships.model_validate(response.json())
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
+            with allure.step('Validate response json'):
+                ListStarships.model_validate(response.json())
 
         @allure.title('Search starship')
         @pytest.mark.skip('For allure statistic')
         def test_search_starship(self, api_session):
             params = {'name': 'X-wing'}
             response = api_session.request(method='GET', path='/starships/', params=params)
-            assert response.status_code == 200
-            assert response.headers.get('content-type') == 'application/json'
-            starship = Starships.model_validate(response.json())
-            assert starship.name == 'X-wing'
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
+            with allure.step('Validate response json'):
+                starship = Starships.model_validate(response.json())
+            with allure.step(f'Check name {starship.name}'):
+                assert starship.name == 'X-wing'
 
         @allure.title('Gett ninth starship')
         def test_get_ninth_starship(self, api_session):
             response = api_session.request(method='GET', path='/starships/9/')
-            assert response.status_code == 200
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
             assert response.json()['name'] == 'Death Star'
             assert response.headers.get('content-type') == 'application/json'
             starship = Starships.model_validate(response.json())
@@ -39,7 +47,8 @@ class TestStarships:
         @allure.title('Gett second starship')
         def test_get_second_starship(self, api_session):
             response = api_session.request(method='GET', path='/starships/2/')
-            assert response.status_code == 200
+            with allure.step('Status code = 200'):
+                assert response.status_code == 200
             assert response.json()['name'] == 'CR90 corvette'
             assert response.headers.get('content-type') == 'application/json'
             starship = Starships.model_validate(response.json())
@@ -51,18 +60,22 @@ class TestStarships:
         @allure.title('Get 404')
         def test_404(self, api_session):
             response = api_session.request(method='GET', path='/wrong/')
-            assert response.status_code == 404
-            assert response.headers.get('Content-Type') == 'text/html'
+            with allure.step('Status code = 404'):
+                assert response.status_code == 404
+            with allure.step('Response headers'):
+                assert response.headers.get('Content-Type') == 'text/html'
 
         @allure.title('Get 405')
         def test_405(self, api_session):
             response = api_session.request(method='POST', path='/starships/2/')
-            assert response.status_code == 405
+            with allure.step('Status code = 405'):
+                assert response.status_code == 405
             assert response.text == RESPONSE_BODY_405
             assert response.json() == {"detail": "Method 'POST' not allowed."}
 
         @allure.title('Wrong query')
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/starships/abcd')
-            assert response.status_code == 404
+            with allure.step('Status code = 405'):
+                assert response.status_code == 404
             assert response.text == RESPONSE_BODY_404
