@@ -1,10 +1,12 @@
 import os
 import logging
+import allure
 import datetime
 from utils import resource
 from requests import Session, Response
 
 
+@allure.step("Write lof to file")
 def write_log_to_file(data: str):
     log_file = 'LOG_FILE'
     # log_file = os.getenv('LOG_FILE')
@@ -18,6 +20,7 @@ def write_log_to_file(data: str):
 logger = logging.getLogger()
 
 
+@allure.step("Logging")
 def allure_request_logger(function):
     def wrapper(*args, **kwargs):
         response: Response = function(*args, **kwargs)
@@ -62,5 +65,3 @@ class TestSession(Session):
             + f'Url: {joined_url}'
         )
         return super().request(method, joined_url)
-
-# , *args, **kwargs

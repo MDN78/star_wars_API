@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "star-wars-api"
+name = "star_wars_API"
 version = "0.1.0"
 description = ""
 authors = ["Dimitri Maksimov <dmitry-maksimov@yandex.ru>"]
