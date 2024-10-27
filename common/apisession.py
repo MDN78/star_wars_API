@@ -1,5 +1,17 @@
+import os
 import logging
+import datetime
+from utils import resource
 from requests import Session, Response
+
+
+def write_log_to_file(data: str):
+    log_file = 'LOG_FILE'
+    # log_file = os.getenv('LOG_FILE')
+    file_name = (resource.path_log_file(log_file) + ".log")
+    with open(file_name, 'a', encoding='utf=8') as logger_file:
+        logger_file.write(data + '\n')
+
 
 ''' Добавим функцию которая будет автоматически цеплять логи'''
 
@@ -12,7 +24,7 @@ def allure_request_logger(function):
         method = response.request.method
         url = response.request.url
         logger.info(method)
-        logger.info(url)
+        url = logger.info(url)
         logger.info(response.request.headers)
         logger.info(response.request.body)
         logger.info(response.headers)
@@ -41,6 +53,14 @@ class TestSession(Session):
     @allure_request_logger
     def request(self, path, method='GET'):
         joined_url = f'{self.base_url}{path}'
+        write_log_to_file(
+            f"\n-----\n"
+            + f"Start time: {str(datetime.datetime.now())}\n"
+            + '\n'
+            + f'Method: {method}'
+            + '\n'
+            + f'Url: {joined_url}'
+        )
         return super().request(method, joined_url)
 
 # , *args, **kwargs
