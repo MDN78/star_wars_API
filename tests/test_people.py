@@ -93,7 +93,7 @@ class TestPeople:
                 assert response.status_code == 405
             with allure.step('Response body = 405'):
                 assert response.text == RESPONSE_BODY_405
-            with allure.step('Method POST not allowed'):
+            with allure.step('check response - Method POST not allowed'):
                 assert response.json() == {"detail": "Method 'POST' not allowed."}
 
         @allure.title('Wrong query')

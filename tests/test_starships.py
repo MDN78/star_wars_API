@@ -39,20 +39,26 @@ class TestStarships:
             response = api_session.request(method='GET', path='/starships/9/')
             with allure.step('Status code = 200'):
                 assert response.status_code == 200
-            assert response.json()['name'] == 'Death Star'
-            assert response.headers.get('content-type') == 'application/json'
+            with allure.step(f'Check name'):
+                assert response.json()['name'] == 'Death Star'
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
             starship = Starships.model_validate(response.json())
-            assert starship.name == 'Death Star'
+            with allure.step('Validate response json'):
+                assert starship.name == 'Death Star'
 
         @allure.title('Gett second starship')
         def test_get_second_starship(self, api_session):
             response = api_session.request(method='GET', path='/starships/2/')
             with allure.step('Status code = 200'):
                 assert response.status_code == 200
-            assert response.json()['name'] == 'CR90 corvette'
-            assert response.headers.get('content-type') == 'application/json'
+            with allure.step(f'Check name'):
+                assert response.json()['name'] == 'CR90 corvette'
+            with allure.step('Check content type'):
+                assert response.headers.get('content-type') == 'application/json'
             starship = Starships.model_validate(response.json())
-            assert starship.name == 'CR90 corvette'
+            with allure.step('Validate response json'):
+                assert starship.name == 'CR90 corvette'
 
     @allure.story('Negative tests')
     class TestNegstive:
@@ -70,12 +76,15 @@ class TestStarships:
             response = api_session.request(method='POST', path='/starships/2/')
             with allure.step('Status code = 405'):
                 assert response.status_code == 405
-            assert response.text == RESPONSE_BODY_405
-            assert response.json() == {"detail": "Method 'POST' not allowed."}
+            with allure.step('Checking response body'):
+                assert response.text == RESPONSE_BODY_405
+            with allure.step('check response - Method POST not allowed'):
+                assert response.json() == {"detail": "Method 'POST' not allowed."}
 
         @allure.title('Wrong query')
         def test_wrong_query(self, api_session):
             response = api_session.request(method='GET', path='/starships/abcd')
             with allure.step('Status code = 405'):
                 assert response.status_code == 404
-            assert response.text == RESPONSE_BODY_404
+            with allure.step('Checking response body'):
+                assert response.text == RESPONSE_BODY_404
