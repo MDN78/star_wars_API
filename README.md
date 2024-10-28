@@ -1,6 +1,9 @@
 ## Test project. API test - Star Wars API
-
-[site SWAPI](https://swapi.dev/)
+----  
+> The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data.
+> After hours of watching films and trawling through content online, service present to you all the People, Films, Species, Starships, Vehicles and Planets from Star Wars.
+> Service have formatted this data in JSON and exposed it to you in a RESTish implementation that allows you to programmatically collect and measure the data.  
+> [site SWAPI](https://swapi.dev/)
 
 #### Tests, positive and negative:
 
@@ -11,6 +14,17 @@
 - [x] Get first people
 - [x] Get first people
 - [x] without user agent
+
+### Проект реализован с использованием:  
+<p  align="left">
+<code><img width="5%" title="python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"></code>
+<code><img width="5%" title="pytest" src="https://github.com/MDN78/MDN78/blob/main/assets/pytest.png"></code>
+<code><img width="5%" title="jenkins" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg"></code>
+<code><img width="5%" title="allure" src="https://github.com/MDN78/MDN78/blob/main/assets/allure_report.png"></code>
+<code><img width="5%" title="alluretestops" src="https://github.com/MDN78/MDN78/blob/main/assets/allure_testops.png"></code>
+<code><img width="5%" title="github" src="https://github.com/MDN78/MDN78/blob/main/assets/github.png"></code>  
+<code><img width="5%" title="telegram" src="assets/tg.png"></code>   
+<code><img width="5%" title="pycharm" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg"></code>  
 
 #### Для запуска автотестов в Jenkins
 
