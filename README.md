@@ -26,6 +26,22 @@
 <code><img width="5%" title="telegram" src="assets/tg.png"></code>   
 <code><img width="5%" title="pycharm" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg"></code>  
 
+### <img width="3%" title="pc" src="assets/pc.jpg"> Локальный запуск UI и API тестов  
+1) Скачать проект и открыть в IDE
+2) Для локального запуска необходимо выполнить команду в терминале:
+
+```commandline
+pytest 
+```
+3) Выполнить запрос на формирование отчета  
+   note: команда для Windows
+
+```commandline
+allure serve
+```
+
+Результат: откроется страница с отчетом Allure Report
+
 #### Для запуска автотестов в Jenkins
 
 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/C10_MDN782007_SWAPI/">проект</a>
