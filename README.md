@@ -1,13 +1,12 @@
 ## Test project. API test - Star Wars API
 
 ![image](assets/swapi.PNG)  
-
-----  
 > The Star Wars API is the world's first quantified and programmatically-formatted set of Star Wars data.
 > After hours of watching films and trawling through content online, service present to you all the People, Films, Species, Starships, Vehicles and Planets from Star Wars.
 > Service have formatted this data in JSON and exposed it to you in a RESTish implementation that allows you to programmatically collect and measure the data.  
 > [site SWAPI](https://swapi.dev/)
 
+----  
 #### Tests, several blocs, positive and negative:
 
 1) People
