@@ -15,6 +15,8 @@
 - [x] Get first people
 - [x] without user agent
 
+---- 
+
 ### Проект реализован с использованием:  
 <p  align="left">
 <code><img width="5%" title="python" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg"></code>
@@ -25,6 +27,8 @@
 <code><img width="5%" title="github" src="https://github.com/MDN78/MDN78/blob/main/assets/github.png"></code>  
 <code><img width="5%" title="telegram" src="assets/tg.png"></code>   
 <code><img width="5%" title="pycharm" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg"></code>  
+
+---- 
 
 ### <img width="3%" title="pc" src="assets/pc.jpg"> Локальный запуск UI и API тестов  
 1) Скачать проект и открыть в IDE
@@ -39,6 +43,8 @@ pytest
 ```commandline
 allure serve
 ```
+
+----  
 
 Результат: откроется страница с отчетом Allure Report
 
