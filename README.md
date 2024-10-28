@@ -46,7 +46,7 @@ allure serve
 
 ---- 
 
-#### Для запуска автотестов в Jenkins
+#### <img width="3%" title="Jenkins" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg">  Для запуска автотестов в Jenkins
 
 1. Открыть <a target="_blank" href="https://jenkins.autotests.cloud/job/C10_MDN782007_SWAPI/">проект</a>
 2. Выбрать пункт `Build with Parameters`
@@ -62,7 +62,7 @@ allure serve
 
 ----
 
-### Allure отчет  
+### <img width="3%" title="Allure" src="assets/allure_report.png"> Allure отчет  
 Отчет позволяет получить детальную информацию по все шагам тестов, включая скриншоты и log - файлы
 
 <details><summary>Jenkins summary report</summary>
