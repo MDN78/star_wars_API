@@ -66,4 +66,12 @@ allure serve
 
 Отчет позволяет получить детальную информацию по все шагам тестов, включая скриншоты и log - файлы
 
-![image](assets/jenkins_allure_logs.PNG)  
+![image](assets/jenkins_allure_logs.PNG)    
+
+----  
+
+### <img width="3%" title="Telegramm" src="assets/tg.png"> Получение уведомлений о прохождении тестов в Telegram
+
+После завершения сборки специальный Telegram-бот отправляет сообщение с отчетом.  
+
+[//]: # (<img width="50%" title="Mobile" src="assets/telegramm_report.PNG">  )
