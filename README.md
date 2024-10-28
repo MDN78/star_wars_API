@@ -53,17 +53,24 @@ allure serve
 5. Нажать кнопку `Build`
 6. Результат запуска сборки можно посмотреть в отчёте Allure
 
-![image](assets/jenkins.PNG)
+<details><summary>Jenkins main page</summary>
+<br>
+<img src="assets/jenkins.PNG">
+</details>
 
 ----
 
-### Allure отчет
-
-![image](assets/jenkins_allure_report.PNG)
-
+### Allure отчет  
 Отчет позволяет получить детальную информацию по все шагам тестов, включая скриншоты и log - файлы
 
-![image](assets/jenkins_allure_logs.PNG)    
+<details><summary>Jenkins summary report</summary>
+<br>
+<img src="assets/jenkins_allure_report.PNG">
+</details>  
+<details><summary>Jenkins detail report</summary>
+<br>
+<img src="assets/jenkins_allure_logs.PNG">
+</details>  
 
 ----  
 
