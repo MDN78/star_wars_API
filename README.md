@@ -42,11 +42,10 @@ pytest
 
 ```commandline
 allure serve
-```
-
-----  
-
+```  
 Результат: откроется страница с отчетом Allure Report
+
+---- 
 
 #### Для запуска автотестов в Jenkins
 
