@@ -5,15 +5,12 @@
 > Service have formatted this data in JSON and exposed it to you in a RESTish implementation that allows you to programmatically collect and measure the data.  
 > [site SWAPI](https://swapi.dev/)
 
-#### Tests, positive and negative:
+#### Tests, several blocs, positive and negative:
 
 1) People
-
-- [x] Get people's list
-- [x] Search people
-- [x] Get first people
-- [x] Get first people
-- [x] without user agent
+2) Films
+3) Root
+4) Starships  
 
 ---- 
 
