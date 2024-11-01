@@ -62,7 +62,6 @@ class TestPeople:
             with allure.step('Check name'):
                 assert people.name == 'C-3PO'
 
-
         @allure.title('Get information about people without user agent')
         def test_get_without_header_user_agent(self, api_session):
             api_session.headers.pop('user-agent')
