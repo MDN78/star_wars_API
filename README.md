@@ -80,4 +80,9 @@ allure serve
 
 После завершения сборки специальный Telegram-бот отправляет сообщение с отчетом.  
 
+<details><summary>Telegram report</summary>
+<br>
+<img src="assets/telegram_report.PNG">
+</details>
+
 [//]: # (<img width="50%" title="Mobile" src="assets/telegramm_report.PNG">  )
